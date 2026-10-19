@@ -18,19 +18,23 @@ var currently_used_controls: Array[String] = ["", "", "", ""]
 var player_count = 0
 
 ## Determines the minimum number of players your game can have. Ranges from 1 to 4.
-## This will likely be fetched from export settings on the developer's actual game in the future.
-@export_range(1, 4, 1) var minimum_players: int = 1
+var minimum_players: int = 1
+#@export_range(1, 4, 1) var minimum_players: int = 1
 
 ## Determines the max number of players your game can have. Ranges from 1 to 4.
 ## This will likely be fetched from export settings on the developer's actual game in the future.
-@export_range(1, 4, 1) var maximum_players: int = 4
+var maximum_players: int = 4
+#@export_range(1, 4, 1) var maximum_players: int = 4
 
 ## Allows players to connect to the game with WASD controls.
-@export var allow_wasd: bool = true
+var allow_wasd: bool = true
+#@export var allow_wasd: bool = true
 ## Allows players to connect to the game with arrow key controls.
-@export var allow_arrow_keys: bool = true
+var allow_arrow_keys: bool = true
+#@export var allow_arrow_keys: bool = true
 ## Allows players to connect to the game with a controller.
-@export var allow_controller: bool = true
+var allow_controller: bool = true
+#@export var allow_controller: bool = true
 
 ## I am resisting the urge to get_parent().get_parent().get_parent().get_parent().
 ## Referenced when starting up the actual game.
@@ -65,7 +69,12 @@ var framework_control: Node
 ## Little animation variable.
 var instructions_visible = true
 
-func _ready() -> void:
+func player_select_screen_start(min_players: int, max_players: int, wasd: bool, arrow_keys: bool, controller: bool) -> void:
+	minimum_players = min_players
+	maximum_players = max_players
+	allow_wasd = wasd
+	allow_arrow_keys = arrow_keys
+	allow_controller = controller
 	anim.play("show_prompt")
 	
 	# gray-out all players that COULD join, but don't have to join. Colors in the rest.

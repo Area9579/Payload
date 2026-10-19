@@ -23,7 +23,9 @@ func add_game(game: Node) -> void:
 func get_camera(in_3d: bool) -> Node:
 	if in_3d:
 		camera_3d.process_mode = Node.PROCESS_MODE_INHERIT
+		camera_2d.process_mode = Node.PROCESS_MODE_DISABLED
 		return camera_3d
 	else:
 		camera_2d.process_mode = Node.PROCESS_MODE_INHERIT
+		camera_3d.process_mode = Node.PROCESS_MODE_DISABLED
 		return camera_2d

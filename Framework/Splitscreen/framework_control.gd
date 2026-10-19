@@ -22,6 +22,21 @@ const MAX_PLAYER_COUNT = 4
 ## We should assign this to a base Node scene we create for them so they don't have to touch this part.
 @export var game: PackedScene = preload("res://Example Game 2D/scenes/example_game.tscn")
 
+## Determines the minimum number of players your game can have. Ranges from 1 to 4.
+## This will likely be fetched from export settings on the developer's actual game in the future.
+@export_range(1, 4, 1) var minimum_players: int = 1
+
+## Determines the max number of players your game can have. Ranges from 1 to 4.
+## This will likely be fetched from export settings on the developer's actual game in the future.
+@export_range(1, 4, 1) var maximum_players: int = 4
+
+## Allows players to connect to the game with WASD controls.
+@export var allow_wasd: bool = true
+## Allows players to connect to the game with arrow key controls.
+@export var allow_arrow_keys: bool = true
+## Allows players to connect to the game with a controller.
+@export var allow_controller: bool = true
+
 ## If true, the game will load 3D cameras instead of 2D ones.
 @export var in_3d: bool = false
 
@@ -32,6 +47,7 @@ const MAX_PLAYER_COUNT = 4
 @export var vertical_2_player_splitscreen: bool = true
 ## Set to 0 to remove black lines between screens entirely, or increase if you want bigger lines between screens.
 @export var splitscreen_line_thickness: int = 2
+
 ## Number of players. Used to set up splitscreen, and also passed into children.
 var player_count: int = 4
 
@@ -46,14 +62,19 @@ var child_scene: Node
 
 func _ready() -> void:
 	# readies cameras, individually instead of a loop to prevent writing a setter that devs might accidentally use
-	Cameras.P1 = player_view_p1.get_camera(in_3d)
-	Cameras.P2 = player_view_p2.get_camera(in_3d)
-	Cameras.P3 = player_view_p3.get_camera(in_3d)
-	Cameras.P4 = player_view_p4.get_camera(in_3d)
+	set_3d(in_3d)
 	# modifies grid container to match splitscreen preferences
 	grid_container.add_theme_constant_override("h_separation", splitscreen_line_thickness)
 	grid_container.add_theme_constant_override("v_separation", splitscreen_line_thickness)
 	start_player_select()
+
+## Changes the cameras that the game uses. If true, sets the game to 3D and disables 2D cameras. If false, vice versa. This is useful if you want to load a 2D menu with no 3D elements in an otherwise 3D game.
+func set_3d(now_in_3d: bool) -> void:
+	in_3d = now_in_3d
+	Cameras.P1 = player_view_p1.get_camera(in_3d)
+	Cameras.P2 = player_view_p2.get_camera(in_3d)
+	Cameras.P3 = player_view_p3.get_camera(in_3d)
+	Cameras.P4 = player_view_p4.get_camera(in_3d)
 
 ## Modifies the number of viewports on screen to match the number of players. Also updates properties such as splitscreen, etc.
 func update_player_view_count() -> void:
@@ -96,6 +117,7 @@ func start_player_select() -> void:
 	child_scene = player_select_screen.instantiate()
 	child_scene.assign_framework_control(self)
 	player_view_p1.add_game(child_scene)
+	child_scene.player_select_screen_start(minimum_players, maximum_players, allow_wasd, allow_arrow_keys, allow_controller)
 	update_player_view_count()
 
 ## Starts up actual game.
