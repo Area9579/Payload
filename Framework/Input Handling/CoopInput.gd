@@ -309,7 +309,6 @@ func _ready_setup_controller(num: int) -> void:
 		input.device = num - 1
 		InputMap.action_add_event("controller_" + str(num) + "_left_trigger", input)
 		InputMap.action_add_event("controller_" + str(num) + "_join", input)
-	
 	# right trigger
 	if true:
 		InputMap.add_action("controller_" + str(num) + "_right_trigger", deadzone)
@@ -319,3 +318,70 @@ func _ready_setup_controller(num: int) -> void:
 		input.device = num - 1
 		InputMap.action_add_event("controller_" + str(num) + "_right_trigger", input)
 		InputMap.action_add_event("controller_" + str(num) + "_join_alt", input)
+	
+	# left 4
+	if true:
+		InputMap.add_action("controller_" + str(num) + "_left_4")
+		var input = InputEventJoypadButton.new()
+		input.button_index = JOY_BUTTON_PADDLE2
+		input.device = num - 1
+		InputMap.action_add_event("controller_" + str(num) + "_left_4", input)
+		InputMap.action_add_event("controller_" + str(num) + "_join", input)
+	# right 4
+	if true:
+		InputMap.add_action("controller_" + str(num) + "_right_4")
+		var input = InputEventJoypadButton.new()
+		input.button_index = JOY_BUTTON_PADDLE1
+		input.device = num - 1
+		InputMap.action_add_event("controller_" + str(num) + "_right_4", input)
+		InputMap.action_add_event("controller_" + str(num) + "_join", input)
+	
+	# d-pad up
+	if true:
+		InputMap.add_action("controller_" + str(num) + "_dpad_up")
+		var input = InputEventJoypadButton.new()
+		input.button_index = JOY_BUTTON_DPAD_UP
+		input.device = num - 1
+		InputMap.action_add_event("controller_" + str(num) + "_dpad_up", input)
+		InputMap.action_add_event("controller_" + str(num) + "_join", input)
+	# d-pad down
+	if true:
+		InputMap.add_action("controller_" + str(num) + "_dpad_down")
+		var input = InputEventJoypadButton.new()
+		input.button_index = JOY_BUTTON_DPAD_DOWN
+		input.device = num - 1
+		InputMap.action_add_event("controller_" + str(num) + "_dpad_down", input)
+		InputMap.action_add_event("controller_" + str(num) + "_join", input)
+	# d-pad left
+	if true:
+		InputMap.add_action("controller_" + str(num) + "_dpad_left")
+		var input = InputEventJoypadButton.new()
+		input.button_index = JOY_BUTTON_DPAD_LEFT
+		input.device = num - 1
+		InputMap.action_add_event("controller_" + str(num) + "_dpad_left", input)
+		InputMap.action_add_event("controller_" + str(num) + "_join", input)
+	# d-pad right
+	if true:
+		InputMap.add_action("controller_" + str(num) + "_dpad_right")
+		var input = InputEventJoypadButton.new()
+		input.button_index = JOY_BUTTON_DPAD_RIGHT
+		input.device = num - 1
+		InputMap.action_add_event("controller_" + str(num) + "_dpad_right", input)
+		InputMap.action_add_event("controller_" + str(num) + "_join", input)
+	
+	# click left stick
+	if true:
+		InputMap.add_action("controller_" + str(num) + "_ls_click")
+		var input = InputEventJoypadButton.new()
+		input.button_index = JOY_BUTTON_LEFT_STICK
+		input.device = num - 1
+		InputMap.action_add_event("controller_" + str(num) + "_ls_click", input)
+		InputMap.action_add_event("controller_" + str(num) + "_join", input)
+	# click right stick
+	if true:
+		InputMap.add_action("controller_" + str(num) + "_rs_click")
+		var input = InputEventJoypadButton.new()
+		input.button_index = JOY_BUTTON_RIGHT_STICK
+		input.device = num - 1
+		InputMap.action_add_event("controller_" + str(num) + "_rs_click", input)
+		InputMap.action_add_event("controller_" + str(num) + "_join", input)

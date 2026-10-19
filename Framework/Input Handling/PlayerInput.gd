@@ -33,6 +33,20 @@ class_name PlayerInput extends Node
 ## Right direction on right joystick. Exclusive to controllers, so if you use these inputs, disable keyboard inputs for your game.
 @onready var RIGHT_RIGHT_STICK: String = ""
 
+## Clicking down on the left joystick (sometimes called L3). Exclusive to controllers, so if you use these inputs, disable keyboard inputs for your game.
+@onready var CLICK_LEFT_STICK: String = ""
+## Clicking down on the right joystick (sometimes called R3). Exclusive to controllers, so if you use these inputs, disable keyboard inputs for your game.
+@onready var CLICK_RIGHT_STICK: String = ""
+
+## Up direction on d-pad. Exclusive to controllers, so if you use these inputs, disable keyboard inputs for your game.
+@onready var UP_DPAD: String = ""
+## Down direction on d-pad. Exclusive to controllers, so if you use these inputs, disable keyboard inputs for your game.
+@onready var DOWN_DPAD: String = ""
+## Left direction on d-pad. Exclusive to controllers, so if you use these inputs, disable keyboard inputs for your game.
+@onready var LEFT_DPAD: String = ""
+## Right direction on d-pad. Exclusive to controllers, so if you use these inputs, disable keyboard inputs for your game.
+@onready var RIGHT_DPAD: String = ""
+
 ## The left bumper (L1) on a controller. Exclusive to controllers, so if you use these inputs, disable keyboard inputs for your game.
 @onready var LEFT_BUMPER: String = ""
 ## The right bumper (R1) on a controller. Exclusive to controllers, so if you use these inputs, disable keyboard inputs for your game.
@@ -41,6 +55,11 @@ class_name PlayerInput extends Node
 @onready var LEFT_TRIGGER: String = ""
 ## The right trigger (R2) on a controller. Exclusive to controllers, so if you use these inputs, disable keyboard inputs for your game.
 @onready var RIGHT_TRIGGER: String = ""
+## (L4) on a controller. Exclusive to controllers, so if you use these inputs, disable keyboard inputs for your game.
+@onready var L4: String = ""
+## (R4) on a controller. Exclusive to controllers, so if you use these inputs, disable keyboard inputs for your game.
+@onready var R4: String = ""
+
 
 ## Current assigned input name.
 var _current_control_name: String = ""
@@ -74,16 +93,32 @@ func _assign_inputs(input_type: String) -> void:
 			DOWN_RIGHT_STICK = input_type + "_rs_down"
 			LEFT_RIGHT_STICK = input_type + "_rs_left"
 			RIGHT_RIGHT_STICK = input_type + "_rs_right"
+			UP_DPAD = input_type + "_dpad_up"
+			DOWN_DPAD = input_type + "_dpad_down"
+			LEFT_DPAD = input_type + "_dpad_left"
+			RIGHT_DPAD = input_type + "_dpad_right"
 			LEFT_BUMPER = input_type + "_left_bumper"
 			RIGHT_BUMPER = input_type + "_right_bumper"
 			LEFT_TRIGGER = input_type + "_left_trigger"
 			RIGHT_TRIGGER = input_type + "_right_trigger"
+			L4 = input_type + "_left_4"
+			R4 = input_type + "_right_4"
+			CLICK_LEFT_STICK = input_type + "_ls_click"
+			CLICK_RIGHT_STICK = input_type + "_rs_click"
 		else:
 			UP_RIGHT_STICK = "unassigned"
 			DOWN_RIGHT_STICK = "unassigned"
 			LEFT_RIGHT_STICK = "unassigned"
 			RIGHT_RIGHT_STICK = "unassigned"
+			UP_DPAD = input_type + "_dpad_up"
+			DOWN_DPAD = input_type + "_dpad_down"
+			LEFT_DPAD = input_type + "_dpad_left"
+			RIGHT_DPAD = input_type + "_dpad_right"
 			LEFT_BUMPER = "unassigned"
 			RIGHT_BUMPER = "unassigned"
 			LEFT_TRIGGER = "unassigned"
 			RIGHT_TRIGGER = "unassigned"
+			L4 = input_type + "unassigned"
+			R4 = input_type + "unassigned"
+			CLICK_LEFT_STICK = "unassigned"
+			CLICK_RIGHT_STICK = "unassigned"
