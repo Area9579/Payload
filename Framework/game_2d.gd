@@ -1,3 +1,4 @@
+## Extend this class to set up a 2D coop game!
 class_name Game2D extends Game
 
 ## Starts the game with the given number of players, and an array of the players that did join.
