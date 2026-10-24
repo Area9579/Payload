@@ -20,7 +20,7 @@ const MAX_PLAYER_COUNT = 4
 const PLAYER_SELECT_SCREEN = preload("uid://d2he756o6q1d4")
 
 ## We should assign this to a base Node scene we create for them so they don't have to touch this part.
-@export_file(".tscn") var GAME_SCENE : String
+@export_file("*.tscn") var GAME_SCENE : String
 
 ## Determines the minimum number of players your game can have. Ranges from 1 to 4.
 ## This will likely be fetched from export settings on the developer's actual game in the future.
@@ -59,7 +59,7 @@ var player_count: int = 4
 
 ## Swaps between player_select and actual game world.
 var player_select_screen : PlayerSelectScreen
-var game_scene : Game
+var game_scene : Node
 
 func _ready() -> void:
 	# readies cameras, individually instead of a loop to prevent writing a setter that devs might accidentally use
@@ -138,7 +138,7 @@ func start_game(new_player_count: int, joined_players: Array[bool]) -> void:
 		player_select_screen.queue_free()
 		await player_select_screen.tree_exited
 	
-	game_scene = (load(GAME_SCENE) as PackedScene).instantiate() as Game
+	game_scene = (load(GAME_SCENE) as PackedScene).instantiate()
 	player_view_p1.add_game(game_scene)
 	# Game should have this method so we can give it player count.
 	game_scene.start(player_count, joined_players)
