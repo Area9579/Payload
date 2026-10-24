@@ -33,10 +33,13 @@ folder_colors={
 "res://Example Game 2D/": "blue",
 "res://Example Game 3D/": "red",
 "res://Framework/": "gray",
-"res://Framework/Game Setup/": "pink",
 "res://Framework/Input Handling/": "purple",
 "res://Framework/Player Select Screen/": "yellow",
 "res://Framework/Splitscreen/": "orange",
+"res://Game Setup/": "pink",
+"res://Game Setup/2D/": "yellow",
+"res://Game Setup/3D/": "green",
+"res://Game Setup/Base Classes/": "gray",
 "res://YOUR GAME/": "green"
 }
 
