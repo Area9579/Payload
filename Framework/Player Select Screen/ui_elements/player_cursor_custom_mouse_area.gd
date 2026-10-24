@@ -1,4 +1,4 @@
-extends Area2D
+class_name PlayerCursorCustomMouseArea extends Area2D
 
 var player_number: int = 1
 

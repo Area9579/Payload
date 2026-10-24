@@ -1,18 +1,13 @@
-extends Node3D
+class_name Game3D extends Game
 
-var player = preload("res://Example Game 3D/scenes/player.tscn")
 
-## Indicates the number of players in the game.
-var number_of_players: int
-
-## Starts the game with the given number of players, and an array of the players that did join.
 func start(player_count: int, joined_players: Array[bool]) -> void:
 	var stored_players = []
 	
 	# adds players to scene by player_num so they match their control scheme
 	for i in joined_players.size():
 		if joined_players[i]:
-			var new_player = player.instantiate()
+			var new_player = (load(PLAYER_SCENE) as PackedScene).instantiate()
 			add_child(new_player)
 			new_player.set_player_num(i + 1)
 			stored_players.append(new_player)

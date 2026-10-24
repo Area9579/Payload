@@ -1,9 +1,4 @@
-extends Node2D
-
-var player = preload("res://Example Game 2D/scenes/example_player.tscn")
-
-## Indicates the number of players in the game.
-var number_of_players: int
+class_name Game2D extends Game
 
 ## Starts the game with the given number of players, and an array of the players that did join.
 func start(player_count: int, joined_players: Array[bool]) -> void:
@@ -12,7 +7,7 @@ func start(player_count: int, joined_players: Array[bool]) -> void:
 	# adds players to scene by player_num so they match their control scheme
 	for i in joined_players.size():
 		if joined_players[i]:
-			var new_player = player.instantiate()
+			var new_player = load(PLAYER_SCENE).instantiate()
 			add_child(new_player)
 			new_player.set_player_num(i + 1)
 			stored_players.append(new_player)
@@ -28,5 +23,3 @@ func start(player_count: int, joined_players: Array[bool]) -> void:
 		stored_players[i].set_camera(Cameras.get_camera(i + 1))
 	
 	number_of_players = player_count
-	
-	
