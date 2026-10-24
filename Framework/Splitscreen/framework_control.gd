@@ -38,7 +38,7 @@ const PLAYER_SELECT_SCREEN = preload("uid://d2he756o6q1d4")
 @export var allow_controller: bool = true
 
 ## If true, the game will load 3D cameras instead of 2D ones.
-@export var in_3d: bool = false
+var in_3d: bool = false
 
 ## Set to false if you want all players to share the same screen.
 @export var splitscreen: bool = true
@@ -139,9 +139,14 @@ func start_game(new_player_count: int, joined_players: Array[bool]) -> void:
 		await player_select_screen.tree_exited
 	
 	game_scene = (load(GAME_SCENE) as PackedScene).instantiate() as Game
-	if game_scene is Game2D && in_3d:
-		printerr("%s: Your game is in 2D but the in_3d export var is set to true in the framework_control.tscn file")
-		return
+	
+	# checking for if the game is 2D or 3D here means the player won't have to set 
+	# the in_3d var manually anymore!
+	if game_scene is Game2D:
+		set_3d(false)
+	else:
+		set_3d(true)
+	
 	player_view_p1.add_game(game_scene)
 	# Game should have this method so we can give it player count.
 	game_scene.start(player_count, joined_players)
