@@ -1,4 +1,4 @@
-extends Node2D
+class_name PlayerSelectScreen extends Node2D
 
 @onready var anim = $"AnimationPlayer"
 
