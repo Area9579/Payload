@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name PlayerCursor extends CharacterBody2D
 
 @export var player_number: int = 1
 

@@ -1,4 +1,4 @@
-extends Control
+class_name PlayerInputCard extends Control
 
 ## Determines player that the card is hooked up to.
 @export_range(1, 4) var player_num: int = 1

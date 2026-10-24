@@ -1,5 +1,5 @@
 # This node is in control of handling player viewports for games.
-extends Control
+class_name FrameworkControl extends Control
 
 ## Always 4, but I'd rather it be obvious when 4 shows up in code.
 const MAX_PLAYER_COUNT = 4

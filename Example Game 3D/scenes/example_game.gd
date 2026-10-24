@@ -22,5 +22,3 @@ func start(player_count: int, joined_players: Array[bool]) -> void:
 		stored_players[i].set_camera(Cameras.get_camera(i + 1))
 	
 	number_of_players = player_count
-	
-	

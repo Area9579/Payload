@@ -1,4 +1,4 @@
-extends TextureButton
+class_name StartGameButton extends TextureButton
 
 @export var parent: Node
 
