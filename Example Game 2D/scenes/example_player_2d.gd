@@ -13,6 +13,14 @@ func set_player_num(player_num: int) -> void:
 	set_position_from_player_num()
 
 
+func set_sprite_frame_from_player_num() -> void:
+	sprite.frame = player_number - 1
+
+
+func set_position_from_player_num() -> void:
+	position.x = player_number * 120 - 240
+
+
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed(CoopInput.get_player(player_number).Y):
 		sprite.rotate(0.1)
@@ -31,11 +39,3 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed(CoopInput.get_player(player_number).START) or Input.is_action_just_pressed(CoopInput.get_player(player_number).SELECT):
 		process_mode = PROCESS_MODE_DISABLED
-
-
-func set_sprite_frame_from_player_num() -> void:
-	sprite.frame = player_number - 1
-
-
-func set_position_from_player_num() -> void:
-	position.x = player_number * 120 - 240

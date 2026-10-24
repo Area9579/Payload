@@ -31,7 +31,7 @@ sky = SubResource("Sky_ocnln")
 
 [node name="Example Game" type="Node" unique_id=1345926565]
 script = ExtResource("1_yoai5")
-PLAYER_SCENE = "uid://bemsyclecc3nw"
+PLAYER_SCENE = "uid://dckfp35yfxda2"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1580362075]
 
