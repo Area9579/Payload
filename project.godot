@@ -10,11 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Co-op Framework"
-config/description="Framework for GDC's co-op game jam."
+config/name="Payload"
 run/main_scene="uid://bsket3o1le7p1"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="uid://dh0ramf8bubv3"
+config/icon="uid://cptr1ufm5k71y"
 
 [autoload]
 
@@ -23,13 +22,15 @@ Cameras="*uid://cg2wie38365tq"
 
 [display]
 
-window/size/mode=3
+window/size/always_on_top=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [file_customization]
 
 folder_colors={
+"res://Content/": "orange",
+"res://Content/Assets/": "purple",
 "res://Example Game 2D/": "blue",
 "res://Example Game 3D/": "red",
 "res://Framework/": "gray",
